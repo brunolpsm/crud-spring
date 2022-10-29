@@ -9,6 +9,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import lombok.Data;
 
 @Entity
@@ -20,13 +23,16 @@ public class Course implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-
+	@JsonProperty("_id")
+//	@JsonIgnore
 	private Long id;
 
 	@Column(length = 200, nullable = false)
+	@JsonProperty("name")
 	private String nome;
 
 	@Column(length = 10, nullable = false)
-	private String category;
+	@JsonProperty("category")
+	private String categoria;
 
 }
